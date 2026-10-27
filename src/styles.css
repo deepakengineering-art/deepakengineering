@@ -75,6 +75,8 @@
   --navy-deep: oklch(0.22 0.06 255);
   --steel: oklch(0.67 0.03 260);
   --orange: oklch(0.71 0.18 55);
+  --logo-red: oklch(0.36 0.1 25);
+  --logo-red-light: oklch(0.52 0.14 25);
   --background: oklch(1 0 0);
   --foreground: oklch(0.24 0.05 255);
   --card: oklch(1 0 0);

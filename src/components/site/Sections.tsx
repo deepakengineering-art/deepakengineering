@@ -19,8 +19,8 @@ export const COMPANY = {
 
 /* ---------- NAVBAR ---------- */
 const NAV = [
-  ["Home", "home"], ["About", "about"], ["How We Work", "process"], ["Products", "products"],
-  ["Gallery", "gallery"], ["Facilities", "facilities"], ["Customers", "customers"], ["Contact", "contact"],
+  ["About", "about"], ["Process", "process"], ["Products", "products"],
+  ["Machined Parts", "gallery"], ["Facilities", "facilities"], ["Customers", "customers"], ["Contact", "contact"],
 ] as const;
 
 export function Navbar() {
@@ -29,23 +29,23 @@ export function Navbar() {
     <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6" aria-label="Main">
         <a href="#home" className="flex items-center gap-2.5">
-          <Logo className="h-9 w-9" />
-          <span className="font-display text-lg font-bold text-navy">Deepak Engineering Co.</span>
+          <Logo className="h-10 w-14" />
+          <span className="font-display text-lg font-bold text-navy lg:max-xl:hidden">Deepak Engineering Co.</span>
         </a>
-        <ul className="hidden items-center gap-5 xl:flex">
+        <ul className="hidden items-center gap-1 lg:flex">
           {NAV.map(([l, id]) => (
-            <li key={id}><a href={`#${id}`} className="hover-line pb-1 text-sm font-medium text-foreground">{l}</a></li>
+            <li key={id}><a href={`#${id}`} className="rounded-md px-2.5 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-secondary hover:text-orange">{l}</a></li>
           ))}
         </ul>
         <div className="flex items-center gap-2">
           <Button asChild variant="cta" className="hidden sm:inline-flex"><a href="#contact">Get a Quote</a></Button>
-          <button className="rounded-md p-2 text-navy xl:hidden" onClick={() => setOpen(!open)} aria-label="Toggle menu" aria-expanded={open}>
+          <button className="rounded-md p-2 text-navy lg:hidden" onClick={() => setOpen(!open)} aria-label="Toggle menu" aria-expanded={open}>
             {open ? <X /> : <Menu />}
           </button>
         </div>
       </nav>
       {open && (
-        <ul className="border-t border-border bg-background px-4 py-3 xl:hidden">
+        <ul className="border-t border-border bg-background px-4 py-3 lg:hidden">
           {NAV.map(([l, id]) => (
             <li key={id}><a href={`#${id}`} onClick={() => setOpen(false)} className="block py-2.5 font-medium text-foreground">{l}</a></li>
           ))}
