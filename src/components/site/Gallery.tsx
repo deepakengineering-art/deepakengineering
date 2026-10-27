@@ -54,8 +54,8 @@ export function Gallery() {
         <SectionHead eyebrow="04 / Machined Parts" title="Parts We Have Machined" />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {PARTS.map((p, i) => (
-            <button key={i} onClick={() => setIdx(i)} className="reveal group overflow-hidden rounded-xl border border-border bg-background focus-visible:outline-2 focus-visible:outline-orange" aria-label={`Open image: ${p.alt}`}>
-              <img src={p.src} alt={p.alt} loading="lazy" className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105" />
+            <button key={i} onClick={() => setIdx(i)} style={{ transitionDelay: `${(i % 3) * 90}ms` }} className="reveal group overflow-hidden rounded-xl border border-border bg-background transition hover:-translate-y-1 hover:border-orange hover:shadow-soft focus-visible:outline-2 focus-visible:outline-orange" aria-label={`Open image: ${p.alt}`}>
+              <img src={p.src} alt={p.alt} loading="lazy" className="aspect-[4/3] w-full bg-secondary object-contain transition duration-500 group-hover:scale-105" />
             </button>
           ))}
         </div>
