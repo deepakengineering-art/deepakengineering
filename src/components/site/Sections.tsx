@@ -61,24 +61,26 @@ const STATS = ["ISO 9001:2015", "4 CNC Machines", "CAD-CAM Capable", "Pune, Maha
 
 export function Hero() {
   return (
-    <section id="home" className="tech-grid relative overflow-hidden bg-navy text-primary-foreground">
-      <div className="mx-auto max-w-7xl px-4 pb-16 pt-24 md:px-6 md:pb-20 md:pt-32">
-        <p className="font-mono text-xs tracking-[0.25em] text-orange">ISO 9001:2015 CERTIFIED</p>
-        <h1 className="mt-5 max-w-4xl text-4xl font-bold leading-[1.05] md:text-7xl">
+    <section id="home" className="tech-grid animate-grid-pan relative overflow-hidden bg-navy text-primary-foreground">
+      <div className="animate-float absolute -right-20 top-16 h-64 w-64 rounded-full bg-orange/15 blur-3xl" aria-hidden />
+      <div className="animate-float-slow absolute -left-24 bottom-24 h-72 w-72 rounded-full bg-steel/15 blur-3xl" aria-hidden />
+      <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-24 md:px-6 md:pb-20 md:pt-32">
+        <p className="animate-fade-up font-mono text-xs tracking-[0.25em] text-orange">ISO 9001:2015 CERTIFIED</p>
+        <h1 className="animate-fade-up mt-5 max-w-4xl text-4xl font-bold leading-[1.05] md:text-7xl" style={{ animationDelay: "120ms" }}>
           Precision Components, From Drawing to Delivery
         </h1>
-        <p className="mt-6 max-w-2xl text-lg text-primary-foreground/75">
+        <p className="animate-fade-up mt-6 max-w-2xl text-lg text-primary-foreground/75" style={{ animationDelay: "240ms" }}>
           CNC machining of compressor, pump, transmission and auto components, built exactly to your requirement.
         </p>
-        <div className="mt-9 flex flex-wrap gap-3">
+        <div className="animate-fade-up mt-9 flex flex-wrap gap-3" style={{ animationDelay: "360ms" }}>
           <Button asChild variant="cta" size="lg"><a href="#contact">Get a Quote</a></Button>
           <Button asChild variant="outlineLight" size="lg"><a href="#facilities">Our Capabilities</a></Button>
         </div>
       </div>
-      <div className="border-t border-primary-foreground/15 bg-navy-deep/60">
+      <div className="relative border-t border-primary-foreground/15 bg-navy-deep/60">
         <ul className="mx-auto grid max-w-7xl grid-cols-2 md:grid-cols-4">
-          {STATS.map((s) => (
-            <li key={s} className="border-primary-foreground/15 px-4 py-5 text-center font-mono text-xs uppercase tracking-wider text-primary-foreground/85 md:border-l md:first:border-l-0">
+          {STATS.map((s, i) => (
+            <li key={s} style={{ animationDelay: `${480 + i * 110}ms` }} className="animate-fade-up border-primary-foreground/15 px-4 py-5 text-center font-mono text-xs uppercase tracking-wider text-primary-foreground/85 md:border-l md:first:border-l-0">
               {s}
             </li>
           ))}
@@ -113,8 +115,8 @@ export function About() {
             We are a leading manufacturing unit of precision machined components as per the customer's requirement. Our team of qualified and experienced engineers has strong knowledge of CNC programming, manufacturing processes, quality management systems, quality equipment and machine maintenance. We use CAD-CAM software including WorkNC, AutoCAD and Inventor.
           </p>
           <div className="grid grid-cols-2 gap-4">
-            {ABOUT_STATS.map(({ icon: I, v, l }) => (
-              <div key={l} className="rounded-xl border border-border p-5">
+            {ABOUT_STATS.map(({ icon: I, v, l }, i) => (
+              <div key={l} style={{ transitionDelay: `${i * 90}ms` }} className="reveal rounded-xl border border-border p-5 transition hover:-translate-y-1 hover:border-orange hover:shadow-soft">
                 <I className="h-5 w-5 text-orange" />
                 <p className="mt-3 font-display text-lg font-semibold leading-snug text-navy">{v}</p>
                 <p className="mt-1 text-sm text-muted-foreground">{l}</p>
@@ -185,9 +187,9 @@ export function Products() {
     <section id="products" className="mx-auto max-w-7xl px-4 py-24 md:px-6">
       <SectionHead eyebrow="03 / Products" title="Components We Manufacture" />
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        {PRODUCTS.map(({ icon: I, t, d }) => (
-          <article key={t} className="reveal group rounded-xl border border-border p-6 transition hover:-translate-y-1 hover:border-orange hover:shadow-soft">
-            <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-navy text-orange"><I className="h-6 w-6" /></span>
+        {PRODUCTS.map(({ icon: I, t, d }, i) => (
+          <article key={t} style={{ transitionDelay: `${i * 90}ms` }} className="reveal group rounded-xl border border-border p-6 transition hover:-translate-y-1 hover:border-orange hover:shadow-soft">
+            <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-navy text-orange transition duration-300 group-hover:scale-110 group-hover:bg-orange group-hover:text-accent-foreground"><I className="h-6 w-6" /></span>
             <h3 className="mt-5 text-lg font-semibold text-navy">{t}</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d}</p>
           </article>
@@ -207,9 +209,9 @@ const MACHINES = [
 
 function MachineCard({ m }: { m: (typeof MACHINES)[number] }) {
   return (
-    <article className="reveal overflow-hidden rounded-xl border border-primary-foreground/15 bg-navy-deep">
-      <div className="relative aspect-[4/3] overflow-hidden">
-        <img src={m.img} alt={m.alt} loading="lazy" className="h-full w-full object-cover" />
+    <article className="reveal group overflow-hidden rounded-xl border border-primary-foreground/15 bg-navy-deep transition hover:-translate-y-1 hover:border-orange/60">
+      <div className="relative aspect-[4/3] overflow-hidden bg-navy-deep">
+        <img src={m.img} alt={m.alt} loading="lazy" className="h-full w-full object-contain p-3 transition duration-500 group-hover:scale-[1.04]" />
         {m.isNew && <span className="absolute left-4 top-4 rounded-md bg-orange px-2.5 py-1 font-mono text-xs font-bold text-accent-foreground">NEW</span>}
       </div>
       <div className="p-6">
