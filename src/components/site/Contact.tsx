@@ -90,7 +90,7 @@ export function Footer() {
     <footer className="bg-navy-deep text-primary-foreground/80">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 md:grid-cols-3 md:px-6">
         <div>
-          <div className="flex items-center gap-2.5"><Logo className="h-9 w-9" /><span className="font-display text-lg font-bold text-primary-foreground">{COMPANY.name}</span></div>
+          <div className="flex items-center gap-2.5"><Logo className="h-10 w-14" /><span className="font-display text-lg font-bold text-primary-foreground">{COMPANY.name}</span></div>
           <p className="mt-4 text-sm">Precision CNC machined compressor, pump, transmission and auto components from Bhor, Pune.</p>
         </div>
         <nav aria-label="Footer">
