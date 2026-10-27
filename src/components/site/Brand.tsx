@@ -1,14 +1,7 @@
+import logo from "@/assets/logo-iso.jpg";
+
 export function Logo({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 40 40" className={className} aria-hidden="true">
-      <rect width="40" height="40" rx="9" fill="var(--orange)" />
-      <circle cx="20" cy="20" r="10" fill="none" stroke="var(--navy)" strokeWidth="3" />
-      <circle cx="20" cy="20" r="3.5" fill="var(--navy)" />
-      {[0, 60, 120, 180, 240, 300].map((a) => (
-        <rect key={a} x="18.5" y="4" width="3" height="5" fill="var(--navy)" transform={`rotate(${a} 20 20)`} />
-      ))}
-    </svg>
-  );
+  return <img src={logo} alt="TUV Austria ISO 9001 certification mark" className={`rounded-md bg-background object-contain ${className}`} />;
 }
 
 export function Eyebrow({ children, light = false }: { children: React.ReactNode; light?: boolean }) {

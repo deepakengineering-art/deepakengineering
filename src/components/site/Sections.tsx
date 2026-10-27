@@ -209,7 +209,7 @@ function MachineCard({ m }: { m: (typeof MACHINES)[number] }) {
   return (
     <article className="reveal overflow-hidden rounded-xl border border-primary-foreground/15 bg-navy-deep">
       <div className="relative aspect-[4/3] overflow-hidden">
-        <img src={m.img} alt={m.alt} loading="lazy" width={1024} height={768} className="h-full w-full object-cover" />
+        <img src={m.img} alt={m.alt} loading="lazy" className="h-full w-full object-cover" />
         {m.isNew && <span className="absolute left-4 top-4 rounded-md bg-orange px-2.5 py-1 font-mono text-xs font-bold text-accent-foreground">NEW</span>}
       </div>
       <div className="p-6">

@@ -9,16 +9,26 @@ import p5 from "@/assets/part-05.jpg";
 import p6 from "@/assets/part-06.jpg";
 import p7 from "@/assets/part-07.jpg";
 import p8 from "@/assets/part-08.jpg";
+import p9 from "@/assets/part-09.jpg";
+import p10 from "@/assets/part-10.jpg";
+import p11 from "@/assets/part-11.jpg";
+import p12 from "@/assets/part-12.jpg";
+import p13 from "@/assets/part-13.jpg";
 
 const PARTS = [
-  { src: p1, alt: "Machined cast iron compressor cylinder" },
-  { src: p2, alt: "Machined forged gear blanks and hubs" },
-  { src: p3, alt: "Machined cast iron pump bearing housing" },
-  { src: p4, alt: "Flange couplings and sleeves in multiple sizes" },
-  { src: p5, alt: "Precision machined compressor pistons" },
-  { src: p6, alt: "Precision machined hypoid gear" },
-  { src: p7, alt: "Machined compressor bearing cover" },
-  { src: p8, alt: "Stainless steel pharmaceutical machinery components" },
+  { src: p1, alt: "Threaded machined steel ring with bolt holes" },
+  { src: p2, alt: "Machined cast cylinder liner" },
+  { src: p3, alt: "Machined aluminium bracket housing" },
+  { src: p4, alt: "Precision drilled and slotted aluminium plate" },
+  { src: p5, alt: "Machined manifold block with fittings" },
+  { src: p6, alt: "Precision turned steel ring" },
+  { src: p7, alt: "Machined aluminium valve block" },
+  { src: p8, alt: "Multi-bore machined aluminium block" },
+  { src: p9, alt: "Turned flanged steel ring" },
+  { src: p10, alt: "Internally threaded machined steel flange" },
+  { src: p11, alt: "Machined bearing housing with cage" },
+  { src: p12, alt: "Machined cast iron pump bearing housing" },
+  { src: p13, alt: "Laser-profiled and drilled steel plates" },
 ];
 
 export function Gallery() {
@@ -45,7 +55,7 @@ export function Gallery() {
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {PARTS.map((p, i) => (
             <button key={i} onClick={() => setIdx(i)} className="reveal group overflow-hidden rounded-xl border border-border bg-background focus-visible:outline-2 focus-visible:outline-orange" aria-label={`Open image: ${p.alt}`}>
-              <img src={p.src} alt={p.alt} loading="lazy" width={944} height={704} className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105" />
+              <img src={p.src} alt={p.alt} loading="lazy" className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105" />
             </button>
           ))}
         </div>
