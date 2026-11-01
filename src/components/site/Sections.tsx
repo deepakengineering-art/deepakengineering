@@ -6,6 +6,12 @@ import nh26 from "@/assets/machine-cnc-turning-nh26.jpg";
 import kitamura from "@/assets/machine-vmc-kitamura.jpg";
 import jober from "@/assets/machine-cnc-turning-jober-lm500.jpg";
 import vmc1060 from "@/assets/machine-vmc-1060.jpg";
+import logoKpcl from "@/assets/customers/kirloskar-pneumatic.png";
+import logoKbl from "@/assets/customers/kirloskar-brothers.svg";
+import logoKsb from "@/assets/customers/ksb.svg";
+import logoWom from "@/assets/customers/wom.png";
+import logoMahindra from "@/assets/customers/mahindra.png";
+import logoMylab from "@/assets/customers/mylab.svg";
 
 export const COMPANY = {
   name: "Deepak Engineering Co.",
@@ -243,19 +249,14 @@ export function Facilities() {
 }
 
 /* ---------- CUSTOMERS ---------- */
-const CUSTOMERS = [
-  ["Kirloskar Pneumatics Co. Ltd.", "Cylinder liners, crosshead guide, bearing covers, cylinder block, pistons"],
-  ["Kirloskar Brothers", "Pump bearing housings"],
-  ["KSB Pumps Ltd. India", "Bearing housings"],
-  ["WOM (Worldwide Oilfield Machine) & Magnum Forge", 'Hubs (3.5", 4", 4.5"), flange couplings, sleeves (3.5", 4", 4.5", 5")'],
-  ["Mahindra and Mahindra", "Hypoid gear blanks"],
-  ["My Lab Discovery Solution", "Pharmaceutical machinery components"],
+const CUSTOMERS: [string, string, string][] = [
+  ["Kirloskar Pneumatics Co. Ltd.", "Cylinder liners, crosshead guide, bearing covers, cylinder block, pistons", logoKpcl],
+  ["Kirloskar Brothers", "Pump bearing housings", logoKbl],
+  ["KSB Pumps Ltd. India", "Bearing housings", logoKsb],
+  ["WOM (Worldwide Oilfield Machine) & Magnum Forge", 'Hubs (3.5", 4", 4.5"), flange couplings, sleeves (3.5", 4", 4.5", 5")', logoWom],
+  ["Mahindra and Mahindra", "Hypoid gear blanks", logoMahindra],
+  ["My Lab Discovery Solution", "Pharmaceutical machinery components", logoMylab],
 ];
-
-function initials(name: string) {
-  const words = name.replace(/\(.*?\)/g, "").split(/[\s&.]+/).filter((w) => w && !/^(and|of|co|ltd|india|the)$/i.test(w));
-  return words.slice(0, 3).map((w) => w[0]).join("").toUpperCase();
-}
 
 export function Customers() {
   const loop = [...CUSTOMERS, ...CUSTOMERS];
@@ -268,10 +269,10 @@ export function Customers() {
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-background to-transparent md:w-32" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-background to-transparent md:w-32" />
         <div className="flex w-max animate-marquee gap-6 py-4 group-hover:[animation-play-state:paused]">
-          {loop.map(([c, p], i) => (
+          {loop.map(([c, p, logo], i) => (
             <div key={i} aria-hidden={i >= CUSTOMERS.length} className="flex w-72 shrink-0 flex-col items-center rounded-xl border border-border bg-card p-6 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-navy font-display text-2xl font-bold text-primary-foreground ring-4 ring-orange/30">
-                {initials(c)}
+              <div className="flex h-24 w-full items-center justify-center rounded-lg bg-card px-4">
+                <img src={logo} alt={`${c} logo`} loading="lazy" className="max-h-20 max-w-full object-contain" />
               </div>
               <p className="mt-4 font-display text-lg font-semibold leading-snug text-navy">{c}</p>
               <p className="mt-3 font-mono text-[11px] uppercase tracking-wider text-orange">Type of Production</p>
