@@ -72,8 +72,13 @@
   --animate-float-slow: float 11s ease-in-out infinite;
   --animate-grid-pan: grid-pan 26s linear infinite;
   --animate-ping-slow: ping-slow 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  --animate-marquee: marquee 35s linear infinite;
 }
 
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-50% - 0.75rem)); }
+}
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(28px); }
   to { opacity: 1; transform: none; }

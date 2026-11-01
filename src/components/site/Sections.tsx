@@ -252,33 +252,33 @@ const CUSTOMERS = [
   ["My Lab Discovery Solution", "Pharmaceutical machinery components"],
 ];
 
+function initials(name: string) {
+  const words = name.replace(/\(.*?\)/g, "").split(/[\s&.]+/).filter((w) => w && !/^(and|of|co|ltd|india|the)$/i.test(w));
+  return words.slice(0, 3).map((w) => w[0]).join("").toUpperCase();
+}
+
 export function Customers() {
+  const loop = [...CUSTOMERS, ...CUSTOMERS];
   return (
-    <section id="customers" className="mx-auto max-w-7xl px-4 py-24 md:px-6">
-      <SectionHead eyebrow="06 / Customers" title="Trusted by Leading Industrial Names" />
-      <div className="reveal hidden overflow-hidden rounded-xl border border-border md:block">
-        <table className="w-full text-left">
-          <thead className="bg-navy font-mono text-xs uppercase tracking-wider text-primary-foreground">
-            <tr><th className="px-6 py-4">Customer</th><th className="px-6 py-4">Type of Production</th></tr>
-          </thead>
-          <tbody className="divide-y divide-border">
-            {CUSTOMERS.map(([c, p]) => (
-              <tr key={c} className="transition hover:bg-secondary">
-                <td className="px-6 py-5 font-display font-semibold text-navy">{c}</td>
-                <td className="px-6 py-5 text-muted-foreground">{p}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <section id="customers" className="py-24">
+      <div className="mx-auto max-w-7xl px-4 md:px-6">
+        <SectionHead eyebrow="06 / Customers" title="Trusted by Leading Industrial Names" />
       </div>
-      <div className="grid gap-4 md:hidden">
-        {CUSTOMERS.map(([c, p]) => (
-          <div key={c} className="rounded-xl border border-border p-5">
-            <p className="font-display font-semibold text-navy">{c}</p>
-            <p className="mt-2 font-mono text-[11px] uppercase tracking-wider text-orange">Type of Production</p>
-            <p className="mt-1 text-sm text-muted-foreground">{p}</p>
-          </div>
-        ))}
+      <div className="marquee group relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-background to-transparent md:w-32" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-background to-transparent md:w-32" />
+        <div className="flex w-max animate-marquee gap-6 py-4 group-hover:[animation-play-state:paused]">
+          {loop.map(([c, p], i) => (
+            <div key={i} aria-hidden={i >= CUSTOMERS.length} className="flex w-72 shrink-0 flex-col items-center rounded-xl border border-border bg-card p-6 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-navy font-display text-2xl font-bold text-primary-foreground ring-4 ring-orange/30">
+                {initials(c)}
+              </div>
+              <p className="mt-4 font-display text-lg font-semibold leading-snug text-navy">{c}</p>
+              <p className="mt-3 font-mono text-[11px] uppercase tracking-wider text-orange">Type of Production</p>
+              <p className="mt-1 text-sm text-muted-foreground">{p}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
