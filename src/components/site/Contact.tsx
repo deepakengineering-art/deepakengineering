@@ -37,9 +37,20 @@ export function Contact() {
     }
     setErrs({});
     const d = r.data;
-    const body = `Name: ${d.name}\nCompany: ${d.company || "-"}\nPhone: ${d.phone}\nEmail: ${d.email}\n\n${d.message}`;
-    window.location.href = `mailto:${COMPANY.email}?subject=${encodeURIComponent(`Quote request from ${d.name}`)}&body=${encodeURIComponent(body)}`;
-    toast.success("Thank you! Your email app is opening with your enquiry.");
+    const text = [
+      `Enquiry to ${COMPANY.name}`,
+      "",
+      `Name: ${d.name}`,
+      `Company: ${d.company || "-"}`,
+      `Phone: ${d.phone}`,
+      `Email: ${d.email}`,
+      "",
+      `Message: ${d.message}`,
+    ].join("\n");
+    const url = `https://wa.me/91${COMPANY.phone}?text=${encodeURIComponent(text)}`;
+    const w = window.open(url, "_blank", "noopener,noreferrer");
+    if (!w) window.location.href = url;
+    toast.success("Opening WhatsApp with your enquiry details — just press send.");
   };
 
   return (
@@ -69,6 +80,7 @@ export function Contact() {
             </div>
           ))}
           <Button type="submit" variant="cta" size="lg" className="sm:col-span-2">Send Enquiry</Button>
+          <p className="-mt-1 text-center text-xs text-muted-foreground sm:col-span-2">Opens WhatsApp with your details filled in — press send to reach us.</p>
         </form>
       </div>
     </section>
